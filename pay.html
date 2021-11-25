@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Payment gateway</title>
+    <style>
+      *
+      {
+        box-sizing: border-box;
+      }
+      body
+        {
+          font-family: 'Poppins';
+        }
+        .head
+        {
+            margin-left:600px;
+            margin-top:50px;
+        }
+        .row{
+          margin-top: 20px;
+        }
+        .image
+        {
+          width:10%;
+          height:10%;
+          margin-left: 600px;
+          margin-top: 20px;
+        }
+        .container
+        {
+          margin-top: 20px;
+          margin-left: 400px;
+        }
+        .form{
+          margin-top: 10px;
+        }
+        .btn{
+          margin-left:150px;
+        }
+        #p1,#p2,#p3,#p4
+        {
+          color: red;
+          font-size: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function()
+    {
+      $("#btn-sub").click(function()
+    {
+      //var num=$("card_no").val();
+      //var mo=$("month").val();
+      //var cvv=$("cvv").val();
+      //var name=$("card_name").val();
+      if($("#card_no").val()=='')
+      {
+        $("#p1").text("*Please Enter the Card Number");
+        $("#card_no").focus();
+        return false;
+      }
+      else if ($("#month").val()=='') {
+        $("#p2").text("*Please Enter Expiry Year");
+        $("#month").focus();
+        return false;
+      }
+      else if ($("#cvv").val()=='') {
+        $("#p3").text("*Please Enter CVV");
+        $("#month").focus();
+        return false;
+      }
+      else if ($("#cvv").val()<3) {
+        $("#p3").text("*Please Enter the correct CVV");
+        $("#month").focus();
+        return false;
+      }
+      else if ($("#card_name").val()=='') {
+        $("#p4").text("*Please Enter the Name");
+        $("#card_name").focus();
+        return false;
+      }
+      else
+      {
+       $("p").remove("#p1","#p2","#p3","p4");
+       window.close('pay.html');
+      }
+
+    })
+    })
+    </script>
+  </head>
+  <body>
+    <div class="heading">
+      <h1 class="head">Payment</h1>
+      <img class="image" src="https://www.kindpng.com/picc/m/35-351793_credit-or-debit-card-mastercard-logo-visa-card.png">
+    </div>
+    <div class="container">
+      <div class="form">
+        <div class="row">
+        <div class="form-group col-lg-5">
+          <input type="text" class="form-control" id="card_no" placeholder="Card Number" maxlength="16">
+          <p id="p1"></p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="form-group col-lg-2">
+          <input type="text" class="form-control" id="month" placeholder="MM/YY">
+          <p id="p2"></p>
+        </div>
+        <div class="form-group col-lg-2">
+          <input type="text" class="form-control" id="cvv" placeholder="CVV">
+          <p id="p3"></p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="form-group col-lg-5">
+          <input type="text" class="form-control" id="card_name" placeholder="Card Holder Name">
+          <p id="p4"></p>
+        </div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-primary btn-lg" id="btn-sub">Make Payment</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
